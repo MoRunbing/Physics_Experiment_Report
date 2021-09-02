@@ -1,0 +1,77 @@
+```{r}
+f1<-c(100,300,600,1000,3000,6000,10000,30000,60000,100000)
+F1<-log(f1)
+UC<-c(1.972,1.85,1.463,1.098,0.456,0.238,0.146,4.88*10^(-4),2.19*10^(-4),1.09*10^(-4))
+UR1<-c(0.310,0.836,1.340,1.635,1.931,1.984,2.01,2.001,2.007,2.019)
+Fa1<-c(86.4,60,43.4,28.8,21.1,10.6,0,0,0,0)
+UL<-c(0.412,0.432,0.478,0.567,1.091,1.589,1.808,2.021,2.032,2.012)
+UR2<-c(1.6,1.585,1.578,1.56,1.362,1.015,0.656,0.241,0.139,0.072)
+Fa2<-c(0,-5.4,-11,-14.4,-31.8,-52,-64.8,-86,-95.3,-72)
+f2<-c(100,300,600,1000,3000,6000,10000,30000,60000,100000,300000,600000,1000000,3000000,6000000,10000000)
+F2<-log(f2)
+Fa3<-c(3.6,4.4,6.03,10.08,-30.3,-43.1,-56.16,-79.7,-86.2,-89.3,-86.2,-73.3,-72,-43.2,-17.2,-8.6)
+A<-as.data.frame(cbind(F1,UC,UR1,Fa1,UL,UR2,Fa2))
+B<-as.data.frame(cbind(F2,Fa3))
+A
+B
+```
+
+```{r}
+library(ggplot2)
+ggplot()+geom_line(data = A,aes(x = F1,y = UR1,colour = "UR"),size=.5)+
+  geom_point(data = A,aes(x = F1,y = UR1,colour = "UR"),size=1)+
+  
+  geom_line(data = A,aes(x = F1,y = UC,colour ="UC"),size=.5) + 
+  geom_point(data = A,aes(x =F1 ,y = UC,colour = "UC"),size=1)+
+  scale_colour_manual("",values = c("UR" = "red","UC" = "blue"))+
+  xlab("logf(log(Hz))")+ylab("U（V）")+
+  ggtitle("RC串联电路的幅频特性曲线")
+```
+
+```{r}
+ggplot()+geom_line(data = A,aes(x = F1,y = Fa1),size=.5)+
+  geom_point(data = A,aes(x = F1,y = Fa1),size=1)+
+  xlab("logf(log(Hz))")+ylab("δφ（°）")+
+  ggtitle("RC串联电路的相频特性曲线")
+```
+
+```{r}
+ggplot()+geom_line(data = A,aes(x = F1,y = UR2,colour = "UR"),size=.5)+
+  geom_point(data = A,aes(x = F1,y = UR2,colour = "UR"),size=1)+
+  
+  geom_line(data = A,aes(x = F1,y = UL,colour ="UL"),size=.5) + 
+  geom_point(data = A,aes(x =F1 ,y = UL,colour = "UL"),size=1)+
+  scale_colour_manual("",values = c("UR" = "red","UL" = "blue"))+
+  xlab("logf(log(Hz))")+ylab("U（V）")+
+  ggtitle("RL串联电路的幅频特性曲线")
+
+```
+
+```{r}
+ggplot()+geom_line(data = A,aes(x = F1,y = Fa2),size=.5)+
+  geom_point(data = A,aes(x = F1,y = Fa2),size=1)+
+  xlab("logf(log(Hz))")+ylab("δφ（°）")+
+  ggtitle("RL串联电路的相频特性曲线")
+
+```
+
+```{r}
+ggplot()+geom_line(data = B,aes(x = F2,y = Fa3),size=.5)+
+  geom_point(data = B,aes(x = F2,y = Fa3),size=1)+
+  xlab("logf(log(Hz))")+ylab("δφ（°）")+
+  ggtitle("RLC串联电路的相频特性曲线")+
+  geom_hline(aes(yintercept = 0, color="y=0"), linetype="dashed")+
+  annotate(geom = "line",
+           x = c(6, 7),
+           y = c(-13, -2),
+           arrow = arrow(angle = 20, length = unit(4, "mm")),color="blue") +
+  annotate(geom = "text",
+           x = 6, y = -18,
+           label = "谐振点",color="blue")
+```
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+---
+title: "seedark"
+author: "MRB"
+date: "2021/5/1"
+output: html_document
+---
+
+```{r}
+R<-0.1302
+l<-5*10^(-4)
+d<-1.5
+b<-seq(0,0.0004,0.00001)
+y<-seq(0,0.001,0.000001)
+wl<-550*10^(-9)
+L1<-sqrt((l/2-b/2)^2+R^2)+sqrt((y-l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y+l/2)^2+d^2)
+L2<-sqrt((l/2-b/2)^2+R^2)+sqrt((y+l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y-l/2)^2+d^2)
+V<-(max(I)-min(I))/(max(I)+min(I))
+I<-4+2*(cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y-l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y+l/2)^2+d^2))/wl)+cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y+l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y-l/2)^2+d^2))/wl))
+
+V<-(max(4+2*(cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y-l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y+l/2)^2+d^2))/wl)+cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y+l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y-l/2)^2+d^2))/wl)))-min(4+2*(cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y-l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y+l/2)^2+d^2))/wl)+cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y+l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y-l/2)^2+d^2))/wl))))/(max(4+2*(cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y-l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y+l/2)^2+d^2))/wl)+cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y+l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y-l/2)^2+d^2))/wl)))+min(4+2*(cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y-l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y+l/2)^2+d^2))/wl)+cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y+l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y-l/2)^2+d^2))/wl))))
+```
+
+```{r}
+R<-0.1302
+l<-10^(-4)
+d<-1.5
+wl<-550*10^(-9)
+b<-seq(0,0.0005,0.000001)
+y<-seq(0,0.001,0.00001)
+arrayInput <- expand.grid(b<-seq(0,0.0005,0.000001),y<-seq(0,0.001,0.00001))
+dim(arrayInput) <- c(501,101,1)
+V<-function(b,y){(max(4+2*(cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y-l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y+l/2)^2+d^2))/wl)+cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y+l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y-l/2)^2+d^2))/wl)))-min(4+2*(cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y-l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y+l/2)^2+d^2))/wl)+cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y+l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y-l/2)^2+d^2))/wl))))/(max(4+2*(cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y-l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y+l/2)^2+d^2))/wl)+cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y+l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y-l/2)^2+d^2))/wl)))+min(4+2*(cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y-l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y+l/2)^2+d^2))/wl)+cos(2*pi*(sqrt((l/2-b/2)^2+R^2)+sqrt((y+l/2)^2+d^2)-sqrt((l/2+b/2)^2+R^2)-sqrt((y-l/2)^2+d^2))/wl))))
+}
+V(arrayInput[,,1],arrayInput[,,2])
+
+
+
+
+
+

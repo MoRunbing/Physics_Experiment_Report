@@ -60,17 +60,19 @@ legend("topright","热敏电阻阻值",lty=1,col="red",bty="n")
 ```
 
 ```{r}
-t<-1/T
+t<-1/(T+273.15)
 ntc<-log(NTC)
-t
-ntc
-k<-seq(15:100)
+
+lr<-lm(ntc~t)
+
 plot(t,ntc,main ="ln(Rntc)与1/T关系曲线",xlab="1/T(1/℃)",ylab="ln(Rntc)(ln(Ω))",
      pch=20,lty=1,axes = T,frame.plot = T)
-Lntc<--0.0314571*(1/t)+8.7699911
-lines(spline(t,Lntc),col="red")
-legend("bottomright","拟合曲线\n ln(R)=-0.0314571/(1/T)+8.7699911",lty=1,col="red",bty="n")
+lines(t,fitted((lr)),col="red")
+legend("bottomright","拟合曲线\n ln(R)=3393.6331*(1/T)-3.3662",lty=1,col="red",bty="n")
 summary(lr)
+
+t
+ntc
 
 ```
 
