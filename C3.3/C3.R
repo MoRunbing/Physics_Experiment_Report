@@ -16,9 +16,6 @@ X1500 <- X1500 %>% filter(C2!="NAN")
 
 
 library(ggplot2)
-
-y<-data.frame(x,X150$C2,X187.5$C2,X300$C2,X375$C2,X750$C2,X1500$C2)
-
 p <- ggplot()+geom_line(aes(x = X150$C1,y = X150$C2,colour = "150"),size=1)
 p<-p+geom_line(aes(x = X187.5$C1,y = X187.5$C2,colour = "187.5"),size=1)
 p<-p+geom_line(aes(x = X300$C1,y = X300$C2,colour = "300"),size=1)
