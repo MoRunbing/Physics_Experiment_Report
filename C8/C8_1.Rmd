@@ -1,0 +1,452 @@
+Exp-C8.1 电阻导热模型
+```{r}
+library(ggplot2)
+```
+
+```{r I=0.02}
+ggplot()+
+  geom_line(data = I_0.02,aes(x = V1,y = V2,colour = "R1"),size=.5)+
+  geom_line(data = I_0.02,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = I_0.02,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = I_0.02,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(25, 40, 1)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/℃")+
+  theme_classic()+
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.025}
+ggplot()+
+  geom_line(data = I_0.025,aes(x = V1,y = V2,colour = "R1"),size=.5)+
+  geom_line(data = I_0.025,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = I_0.025,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = I_0.025,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(26, 45, 2)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/℃")+
+  theme_classic()+
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.03}
+ggplot()+
+  geom_line(data = I_0.03,aes(x = V1,y = V2,colour = "R1"),size=.5)+
+  geom_line(data = I_0.03,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = I_0.03,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = I_0.03,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(25, 55, 3)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/℃")+
+  theme_classic()+
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.035}
+ggplot()+
+  geom_line(data = I_0.035,aes(x = V1,y = V2,colour = "R1"),size=.5)+
+  geom_line(data = I_0.035,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = I_0.035,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = I_0.035,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(25, 61, 4)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/℃")+
+  theme_classic()+
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.04}
+ggplot()+
+  geom_line(data = I_0.04,aes(x = V1,y = V2,colour = "R1"),size=.5)+
+  geom_line(data = I_0.04,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = I_0.04,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = I_0.04,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(25, 75, 5)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/℃")+
+  theme_classic()+
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+```{r data prep}
+I_0.02_ad<-as.data.frame(do.call(cbind, lapply(I_0.02,`length<-`,262)))
+I_0.025_ad<-as.data.frame(do.call(cbind, lapply(I_0.025,`length<-`,262)))
+I_0.03_ad<-as.data.frame(do.call(cbind, lapply(I_0.03,`length<-`,262)))
+I_0.035_ad<-as.data.frame(do.call(cbind, lapply(I_0.035,`length<-`,262)))
+I_0.04_ad<-as.data.frame(do.call(cbind, lapply(I_0.04,`length<-`,262)))
+
+R_1<-cbind.data.frame(V1=c(1:262),V2=I_0.02_ad$V2,V3=I_0.025_ad$V2,V4=I_0.03_ad$V2,V5=I_0.035_ad$V2,V6=I_0.04_ad$V2)
+
+R_2<-cbind.data.frame(V1=c(1:262),V2=I_0.02_ad$V3,V3=I_0.025_ad$V3,V4=I_0.03_ad$V3,V5=I_0.035_ad$V3,V6=I_0.04_ad$V3)
+
+R_3<-cbind.data.frame(V1=c(1:262),V2=I_0.02_ad$V4,V3=I_0.025_ad$V4,V4=I_0.03_ad$V4,V5=I_0.035_ad$V4,V6=I_0.04_ad$V4)
+
+R_4<-cbind.data.frame(V1=c(1:262),V2=I_0.02_ad$V5,V3=I_0.025_ad$V5,V4=I_0.03_ad$V5,V5=I_0.035_ad$V5,V6=I_0.04_ad$V5)
+```
+
+```{r R1}
+ggplot()+
+  geom_line(data = R_1,aes(x = V1,y = V2,colour ="P1"),size=.5)+
+  geom_line(data = R_1,aes(x = V1,y = V3,colour ="P2"),size=.5) + 
+  geom_line(data = R_1,aes(x = V1,y = V4,colour ="P3"),size=.5) + 
+  geom_line(data = R_1,aes(x = V1,y = V5,colour ="P4"),size=.5) + 
+  geom_line(data = R_1,aes(x = V1,y = V6,colour ="P5"),size=.5) + 
+  
+  scale_colour_manual("",values = c("P1" = "red","P2" = "blue","P3" = "green","P4" = "orange","P5" = "purple"))+
+  scale_y_continuous(breaks=seq(25, 675, 5)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同功率电阻温度随时间变化", x="时间/s", y="温度/℃")+
+  theme_classic()+
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r R2}
+ggplot()+
+  geom_line(data = R_2,aes(x = V1,y = V2,colour ="P1"),size=.5)+
+  geom_line(data = R_2,aes(x = V1,y = V3,colour ="P2"),size=.5) + 
+  geom_line(data = R_2,aes(x = V1,y = V4,colour ="P3"),size=.5) + 
+  geom_line(data = R_2,aes(x = V1,y = V5,colour ="P4"),size=.5) + 
+  geom_line(data = R_2,aes(x = V1,y = V6,colour ="P5"),size=.5) + 
+  
+  scale_colour_manual("",values = c("P1" = "red","P2" = "blue","P3" = "green","P4" = "orange","P5" = "purple"))+
+  scale_y_continuous(breaks=seq(25, 60, 4)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同功率电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r R3}
+ggplot()+
+  geom_line(data = R_3,aes(x = V1,y = V2,colour ="P1"),size=.5)+
+  geom_line(data = R_3,aes(x = V1,y = V3,colour ="P2"),size=.5) + 
+  geom_line(data = R_3,aes(x = V1,y = V4,colour ="P3"),size=.5) + 
+  geom_line(data = R_3,aes(x = V1,y = V5,colour ="P4"),size=.5) + 
+  geom_line(data = R_3,aes(x = V1,y = V6,colour ="P5"),size=.5) + 
+  
+  scale_colour_manual("",values = c("P1" = "red","P2" = "blue","P3" = "green","P4" = "orange","P5" = "purple"))+
+  scale_y_continuous(breaks=seq(25, 60, 3)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同功率电阻温度随时间变化", x="时间/s", y="温度/℃")+
+  theme_classic()+
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r R4}
+ggplot()+
+  geom_line(data = R_4,aes(x = V1,y = V2,colour ="P1"),size=.5)+
+  geom_line(data = R_4,aes(x = V1,y = V3,colour ="P2"),size=.5) + 
+  geom_line(data = R_4,aes(x = V1,y = V4,colour ="P3"),size=.5) + 
+  geom_line(data = R_4,aes(x = V1,y = V5,colour ="P4"),size=.5) + 
+  geom_line(data = R_4,aes(x = V1,y = V6,colour ="P5"),size=.5) + 
+  
+  scale_colour_manual("",values = c("P1" = "red","P2" = "blue","P3" = "green","P4" = "orange","P5" = "purple"))+
+  scale_y_continuous(breaks=seq(25, 60, 1)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同功率电阻温度随时间变化", x="时间/s", y="温度/℃")+
+  theme_classic()+
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+
+Exp-C8.2 COMSOL仿真
+
+1.Version1 all copper
+```{r I=0.02}
+ggplot()+
+  geom_line(data = v1_0.02,aes(x = V1,y = V2,colour ="R1"),size=.5)+
+  geom_line(data = v1_0.02,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = v1_0.02,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = v1_0.02,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(300, 330, 1)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.025}
+ggplot()+
+  geom_line(data = v1_0.025,aes(x = V1,y = V2,colour ="R1"),size=.5)+
+  geom_line(data = v1_0.025,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = v1_0.025,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = v1_0.025,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(300, 330, 2)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.03}
+ggplot()+
+  geom_line(data = v1_0.03,aes(x = V1,y = V2,colour ="R1"),size=.5)+
+  geom_line(data = v1_0.03,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = v1_0.03,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = v1_0.03,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(300, 330, 2)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.035}
+ggplot()+
+  geom_line(data = v1_0.035,aes(x = V1,y = V2,colour ="R1"),size=.5)+
+  geom_line(data = v1_0.035,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = v1_0.035,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = v1_0.035,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(300, 330, 3)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.04}
+ggplot()+
+  geom_line(data = v1_0.04,aes(x = V1,y = V2,colour ="R1"),size=.5)+
+  geom_line(data = v1_0.04,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = v1_0.04,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = v1_0.04,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(300, 380, 5)) +
+  scale_x_continuous(breaks=seq(0, 380, 50))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+2.Version2 copper layer
+
+```{r I=0.02}
+ggplot()+
+  geom_line(data = v2_0.02,aes(x = V1,y = V2,colour ="R1"),size=.5)+
+  geom_line(data = v2_0.02,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = v2_0.02,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = v2_0.02,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(300, 330, 1)) +
+  scale_x_continuous(breaks=seq(0, 6000, 200))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.025}
+ggplot()+
+  geom_line(data = v2_0.025,aes(x = V1,y = V2,colour ="R1"),size=.5)+
+  geom_line(data = v2_0.025,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = v2_0.025,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = v2_0.025,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(300, 330, 2)) +
+  scale_x_continuous(breaks=seq(0, 6000, 200))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.03}
+ggplot()+
+  geom_line(data = v2_0.03,aes(x = V1,y = V2,colour ="R1"),size=.5)+
+  geom_line(data = v2_0.03,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = v2_0.03,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = v2_0.03,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(300, 330, 2)) +
+  scale_x_continuous(breaks=seq(0, 6000, 200))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.035}
+ggplot()+
+  geom_line(data = v2_0.035,aes(x = V1,y = V2,colour ="R1"),size=.5)+
+  geom_line(data = v2_0.035,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = v2_0.035,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = v2_0.035,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(300, 330, 3)) +
+  scale_x_continuous(breaks=seq(0, 6000, 200))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r I=0.04}
+ggplot()+
+  geom_line(data = v2_0.04,aes(x = V1,y = V2,colour ="R1"),size=.5)+
+  geom_line(data = v2_0.04,aes(x = V1,y = V3,colour ="R2"),size=.5) + 
+  geom_line(data = v2_0.04,aes(x = V1,y = V4,colour ="R3"),size=.5) + 
+  geom_line(data = v2_0.04,aes(x = V1,y = V5,colour ="R4"),size=.5) + 
+  
+  scale_colour_manual("",values = c("R1" = "red","R2" = "blue","R3" = "green","R4" = "orange"))+
+  scale_y_continuous(breaks=seq(300, 380, 5)) +
+  scale_x_continuous(breaks=seq(0, 6000, 200))+
+  labs(title="不同阻值电阻温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+
+Exp-C8.3
+```{r m1 glass}
+ggplot()+
+  geom_line(data = m1_g,aes(x = V1,y = V2,colour ="中心面"),size=.5)+
+  geom_line(data = m1_g,aes(x = V1,y = V3,colour ="加热面"),size=.5) + 
+
+  scale_colour_manual("",values = c("中心面" = "red","加热面" = "blue"))+
+  scale_y_continuous(breaks=seq(290, 380, 1)) +
+  scale_x_continuous(breaks=seq(0, 700, 50))+
+  labs(title="同种材料不同表面温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r m1 rubber}
+ggplot()+
+  geom_line(data = m1_r,aes(x = V1,y = V2,colour ="中心面"),size=.5)+
+  geom_line(data = m1_r,aes(x = V1,y = V3,colour ="加热面"),size=.5) + 
+
+  scale_colour_manual("",values = c("中心面" = "red","加热面" = "blue"))+
+  scale_y_continuous(breaks=seq(290, 380, 1)) +
+  scale_x_continuous(breaks=seq(0, 700, 50))+
+  labs(title="同种材料不同表面温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r m2 glass}
+ggplot()+
+  geom_line(data = m2_g,aes(x = V1,y = V2,colour ="加热面"),size=.5)+
+  geom_line(data = m2_g,aes(x = V1,y = V3,colour ="中心面"),size=.5) + 
+
+  scale_colour_manual("",values = c("加热面" = "red","中心面" = "blue"))+
+  scale_y_continuous(breaks=seq(290, 380, 1)) +
+  scale_x_continuous(breaks=seq(0, 700, 50))+
+  labs(title="同种材料不同表面温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r m2 rubber}
+ggplot()+
+  geom_line(data = m2_r,aes(x = V1,y = V2,colour ="加热面"),size=.5)+
+  geom_line(data = m2_r,aes(x = V1,y = V3,colour ="中心面"),size=.5) + 
+
+  scale_colour_manual("",values = c("加热面" = "red","中心面" = "blue"))+
+  scale_y_continuous(breaks=seq(290, 380, 1)) +
+  scale_x_continuous(breaks=seq(0, 700, 50))+
+  labs(title="同种材料不同表面温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r m3 glass}
+ggplot()+
+  geom_line(data = m3_g,aes(x = V1,y = V2,colour ="加热面"),size=.5)+
+  geom_line(data = m3_g,aes(x = V1,y = V3,colour ="中心面"),size=.5) + 
+
+  scale_colour_manual("",values = c("加热面" = "red","中心面" = "blue"))+
+  scale_y_continuous(breaks=seq(290, 380, 1)) +
+  scale_x_continuous(breaks=seq(0, 700, 50))+
+  labs(title="同种材料不同表面温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r m3 rubber}
+ggplot()+
+  geom_line(data = m3_r,aes(x = V1,y = V2,colour ="加热面"),size=.5)+
+  geom_line(data = m3_r,aes(x = V1,y = V3,colour ="中心面"),size=.5) + 
+
+  scale_colour_manual("",values = c("加热面" = "red","中心面" = "blue"))+
+  scale_y_continuous(breaks=seq(290, 380, 1)) +
+  scale_x_continuous(breaks=seq(0, 700, 50))+
+  labs(title="同种材料不同表面温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r m4 glass}
+ggplot()+
+  geom_line(data = m2_g,aes(x = V1,y = V2,colour ="加热面"),size=.5)+
+  geom_line(data = m2_g,aes(x = V1,y = V3,colour ="中心面"),size=.5) + 
+
+  scale_colour_manual("",values = c("加热面" = "red","中心面" = "blue"))+
+  scale_y_continuous(breaks=seq(290, 380, 1)) +
+  scale_x_continuous(breaks=seq(0, 700, 50))+
+  labs(title="同种材料不同表面温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r m4 rubber}
+ggplot()+
+  geom_line(data = m2_r,aes(x = V1,y = V2,colour ="加热面"),size=.5)+
+  geom_line(data = m2_r,aes(x = V1,y = V3,colour ="中心面"),size=.5) + 
+
+  scale_colour_manual("",values = c("加热面" = "red","中心面" = "blue"))+
+  scale_y_continuous(breaks=seq(290, 380, 1)) +
+  scale_x_continuous(breaks=seq(0, 700, 50))+
+  labs(title="同种材料不同表面温度随时间变化", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+difAA
+```{r 0.6}
+ggplot()+
+  geom_line(data = aa_0.6,aes(x = V1,y = V2,colour ="加热面"),size=.5)+
+  geom_line(data = aa_0.6,aes(x = V1,y = V3,colour ="中心面"),size=.5) + 
+
+  scale_colour_manual("",values = c("加热面" = "red","中心面" = "blue"))+
+  scale_y_continuous(breaks=seq(290, 380, 1)) +
+  scale_x_continuous(breaks=seq(0, 700, 50))+
+  labs(title="不同修正系数对温度随时间变化曲线的影响", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r 0.85}
+ggplot()+
+  geom_line(data = aa_0.85,aes(x = V1,y = V2,colour ="加热面"),size=.5)+
+  geom_line(data = aa_0.85,aes(x = V1,y = V3,colour ="中心面"),size=.5) + 
+
+  scale_colour_manual("",values = c("加热面" = "red","中心面" = "blue"))+
+  scale_y_continuous(breaks=seq(290, 380, 1)) +
+  scale_x_continuous(breaks=seq(0, 700, 50))+
+  labs(title="不同修正系数对温度随时间变化曲线的影响", x="时间/s", y="温度/K")+
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
