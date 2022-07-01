@@ -1,0 +1,32 @@
+```{r}
+Upp<-c(5.2,5.12,5.2,5.28,5.36,4.8)
+Uprime<-Upp/(2*sqrt(2))
+Uprime
+Uef<-c(1.7676,1.7691,1.7676,1.7613,1.3284,2.7*10^(-4))
+Ua<-abs(Uprime-Uef)/Uef
+Ua
+```
+
+```{r}
+t0<-c(2,0.2,0.02,0.002,0.0002,0.00002)
+T<-5*t0
+T
+f<-1/T
+fprime<-c(0.1,1,10,100,0,0)
+r<-abs(f-fprime)/f
+```
+
+```{r}
+ggplot()+geom_line(data = A,aes(x = F,y = Uprime,colour = "U'"),size=.5)+
+  geom_point(data = A,aes(x = F,y = Uprime,colour = "U'"),size=1)+
+  
+  geom_line(data = A,aes(x = F,y = Uef,colour ="Ueff"),size=.5) + 
+  geom_point(data = A,aes(x =F ,y = Uef,colour = "Ueff"),size=1)+
+  scale_colour_manual("",values = c("U'" = "red","Ueff" = "blue"))+
+  xlab("频率对数(ln(Hz))")+ylab("电压（V）")+
+  ggtitle("电压随频率变化曲线")
+```
+
+
+
+
