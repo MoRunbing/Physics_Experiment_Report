@@ -1,0 +1,115 @@
+---
+title: "A4"
+author: "MRB"
+date: "2021/5/26"
+output: html_document
+---
+
+```{r}
+T<-seq(15,100,by=5)
+RCu1<-c(52.841,53.670,54.929,56.385,56.933,
+        57.509,58.378,59.301,60.295,61.322,
+        62.363,63.396,64.425,65.464,66.568,
+        67.632,68.729,69.968)
+RCu2<-c(53.104,54.414,55.617,56.366,57.534,
+        58.605,59.688,60.738,61.789,62.817,
+        63.852,64.896,65.897,66.837,67.784,
+        68.704,69.578,69.933)
+RCu<-(RCu1+RCu2)/2
+RCu
+
+LR<-lm(RCu~T)
+plot(T,RCu,main ="Cu50金属电阻与温度关系曲线",xlab="温度(℃)",ylab="Cu50金属电阻(Ω)",
+     pch=20,lty=1,axes = T,frame.plot = T)
+lines(T,fitted((LR)),col="red")
+legend("topleft","拟合曲线\n R=0.199706T+50.135255",lty=1,col="red",bty="n")
+summary(LR)
+```
+
+```{r}
+Ta<-mean(T)
+Ta
+RCua<-mean(RCu)
+RCua
+m<-mean(T*RCu)
+m
+ta<-mean(T^2)
+ta
+b1<-(Ta*RCua-m)/(Ta^2-ta)
+b1
+a1<-RCua-b1*Ta
+a1
+```
+
+```{r}
+NTC1<-c(4385.2,3795.3,3024.5,2630.3,2316.2,
+        2005.2,1713.1,1458.2,1239.5,1052.9,
+        952.2,765.5,655.2,562.5,484.2,
+        419.6,362.8,302.7)
+NTC2<-c(4223.9,3297.7,2707.1,2436.6,1998.8,
+        1649.9,1373.7,1150.8,966.8,819.1,
+        698.2,597.5,514.8,449.6,394.9,
+        348.7,315.2,301.9)
+NTC<-(NTC1+NTC2)/2
+NTC
+
+plot(T,NTC,main ="NTC热敏电阻与温度关系曲线",xlab="温度(℃)",ylab="NTC热敏电阻(Ω)",
+     pch=20,lty=1,axes = T,frame.plot = T)
+lines(spline(T,NTC),col="red")
+legend("topright","热敏电阻阻值",lty=1,col="red",bty="n")
+```
+
+```{r}
+t<-1/(T+273.15)
+ntc<-log(NTC)
+
+lr<-lm(ntc~t)
+
+plot(t,ntc,main ="ln(Rntc)与1/T关系曲线",xlab="1/T(1/℃)",ylab="ln(Rntc)(ln(Ω))",
+     pch=20,lty=1,axes = T,frame.plot = T)
+lines(t,fitted((lr)),col="red")
+legend("bottomright","拟合曲线\n ln(R)=3393.6331*(1/T)-3.3662",lty=1,col="red",bty="n")
+summary(lr)
+
+t
+ntc
+
+```
+
+```{r}
+U1<-c(652.4,646.4,634.4,627.8,621.9,
+      614.6,606.2,597.3,587.7,577.7,
+      567.4,556.9,546.4,535.8,525.0,
+      514.4,503.2,488.3)
+U2<-c(650.1,637.0,627.4,622.6,611.5,
+      600.4,589.5,578.7,567.7,557.0,
+      546.3,536.0,525.7,515.7,505.7,
+      496.0,487.5,484.2)
+U<-(U1+U2)/2
+U
+
+Lr<-lm(U~T)
+plot(T,U,main ="PN结与温度关系曲线",xlab="温度(℃)",ylab="PN结电压(mV)",
+     pch=20,lty=1,axes = T,frame.plot = T)
+lines(T,fitted((Lr)),col="red")
+legend("topright","拟合曲线\n U=-1.965366T+683.6419",lty=1,col="red",bty="n")
+summary(Lr)
+```
+
+```{r}
+Ta<-mean(T)
+Ta
+u<-mean(U)
+u
+M<-mean(T*U)
+M
+ta<-mean(T^2)
+ta
+b2<-(Ta*u-M)/(Ta^2-ta)
+b2
+a2<-u-b2*Ta
+a2
+```
+
+
+

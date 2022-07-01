@@ -1,0 +1,115 @@
+---
+title: "A2"
+author: "MRB"
+date: "2021/5/13"
+output: html_document
+---
+
+```{r}
+m<-c(0,0.5,1,1.5,2,2.5,3,3.5)
+V1<-c(0,9,17.9,27.3,36.5,45.7,54.6,62.2)
+V2<-c(1.2,6.6,15,24.2,33.1,42,52.6,62.2)
+Va<-(V1+V2)/2
+Va
+LR<-lm(Va~m)
+plot(m,Va,main ="输出电压与砝码质量关系图",xlab="砝码质量m(g)",ylab="输出电压U(mV)",
+     pch=20,lty=1,axes = T,frame.plot = T)
+lines(m,fitted((LR)),col="red")
+legend("topleft","拟合曲线\n U=17.89167m-0.6791667",lty=1,col="red",bty="n",cex=0.7)
+summary(LR)
+```
+
+```{r 试试ggplot}
+library(ggplot2)
+mydata <- data.frame(m,Va)
+sp<-ggplot(mydata,aes(m,Va))+geom_point()
+sp+stat_smooth(method=lm,se=FALSE)
+```
+
+```{r 灵敏度}
+ma<-sum(m)/length(m)
+Ua<-sum(Va)/length(Va)
+b<-(ma*Ua-sum(m*Va)/length(m))/(ma^2-sum(m^2)/length(m))
+a<-Ua-b*ma
+R<-(sum(m*Va)/length(m)-ma*Ua)/sqrt((ma^2-sum(m^2)/length(m))*(Ua^2-sum(Va^2)/length(Va)))
+K<-b/9.7883
+```
+
+```{r 水}
+D1<-c(32.04,32.04,32.04,32.04,32.02)
+D2<-c(30.96,30.92,30.98,30.92,30.96)
+D1a<-mean(D1)
+D2a<-mean(D2)
+D1sd<-sd(D1)/length(D1)
+D2sd<-sd(D2)/length(D2)
+
+U1<-c(34.5,36.1,35.5,35.6,36.2)
+U2<-c(7.9,7.8,7.8,7.7,7.7)
+dU<-U1-U2
+dUa<-mean(dU)
+dUsd<-sd(dU)/length(dU)
+α1<-dUa/(K*pi*(D1a+D2a))
+```
+
+```{r 不确定度}
+Sdu<-sqrt(sum((dU-dUa)^2)/20)
+SD1<-sqrt(sum((D1-D1a)^2)/20)
+SD2<-sqrt(sum((D2-D2a)^2)/20)
+Sa<-sqrt((α1/dUa*Sdu)^2+(α1/(D1a+D2a)*SD1)^2+(α1/(D1a+D2a)*SD2)^2)
+Va<-4*Sa^4/((α1/dUa*Sdu)^4+(α1/(D1a+D2a)*SD1)^4+(α1/(D1a+D2a)*SD2)^4)
+
+Uu<-0.1/sqrt(3)
+Ud<-0.02/sqrt(3)
+Sb<-sqrt((α1/dUa*Uu)^2+(α1/(D1a+D2a)*Ud)^2+(α1/(D1a+D2a)*Ud)^2)
+Vb<-Sb^4/((α1/dUa*Uu)^4+(α1/(D1a+D2a)*Ud)^4+(α1/(D1a+D2a)*Ud)^4)
+
+S<-sqrt(Sa^2+Sb^2)
+V<-S^4/(Sa^4/Va+Sb^4/Vb)
+
+tp<-qt(0.95,V)
+N<-tp*S
+```
+
+```{r 酒精}
+u1<-c(14.3,16.7,18.8,22.7,28.1,31.6)
+u2<-c(5.2,5.8,5.4,6.0,5.6,5.8)
+C<-c(1,0.8,0.6,0.4,0.2,0.1)
+du<-u1-u2
+f=du/(1000*K)
+α2<-du/(K*pi*(D1a+D2a))
+```
+
+```{r 对数VS双曲线拟合}
+plot(C,α2,main ="浓度与表面张力系数关系曲线",xlab="浓度",ylab="表面张力系数(N/m)",
+     pch=20,lty=1,axes = T,frame.plot = T)
+ 
+ nlc<-nls.control(maxiter = 1000)#最大能1000次循环
+
+ f1=function(C, a, b) {a*log(C)+b};
+ result1=nls(C~f1(C, a, b), control = nlc, data=data.frame(C,α2), start=list(a=-1, b=0))
+ summary(result1) 
+ 
+ f2=function(C, a, b) {a*(C)^(-1)+b};
+ result2=nls(C~f2(C, a, b), control = nlc, data=data.frame(C,α2), start=list(a=1, b=0))
+ summary(result2) 
+```
+
+```{r}
+plot(C,α2,main ="浓度与表面张力系数关系曲线",xlab="浓度",ylab="表面张力系数(N/m)",
+     pch=20,lty=1,axes = T,frame.plot = T)
+lr<-(-0.020617)*log(C)+0.026231
+lines(spline(C,lr),col="red")
+legend("topright","拟合曲线\n α=-0.020617lnc+0.026231",lty=1,col="red",bty="n")
+```
+
+```{r 换元后线性拟合比较好}
+A<-log(C)
+B<-C^(-1)
+a<-lm(α2~A)
+b<-lm(α2~B)
+summary(a)
+summary(b)
+```
+
+
+
