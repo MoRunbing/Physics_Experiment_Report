@@ -1,0 +1,74 @@
+---
+title: "seedark"
+author: "MRB"
+date: "2021/10/29"
+output: html_document
+---
+
+```{r}
+library(pheatmap)
+library(readr)
+library(ggplot2)
+data1 <- read.table("D:/Rdata/Experiment Report/B11/data1.txt",row.names=NULL, quote="\"", comment.char="",na.strings="0")
+data1<-as.matrix(data1)
+p1<-pheatmap(data1,cluster_rows = F,cluster_cols = F,show_colnames = F,legend = F,border_color="NA")
+```
+
+```{r}
+data2 <- read.table("D:/Rdata/Experiment Report/B11/data2.txt",row.names=NULL, quote="\"", comment.char="",na.strings="0")
+data2<-as.matrix(data2)
+p2<-pheatmap(data2,cluster_rows = F,cluster_cols = F,show_colnames = F,legend = T,border_color="NA")
+```
+
+```{r}
+data4<- read.table("D:/Rdata/Experiment Report/B11/data4.txt",row.names=NULL, quote="\"", comment.char="",na.strings="0")
+data4<-as.matrix(data4)
+p1<-pheatmap(data4,cluster_rows = F,cluster_cols = F,show_colnames = F,legend = T,border_color="NA")
+```
+
+```{r 115}
+data5<- read.table("D:/Rdata/Experiment Report/B11/data5.txt",row.names=NULL, quote="\"", comment.char="",na.strings="0")
+data5<-as.matrix(data5)
+p3<-pheatmap(data5,cluster_rows = F,cluster_cols = F,show_colnames = F,legend = T,border_color="NA")
+
+r5<-data5[10,]
+c5<-c(-9:9)
+m5<-data.frame(c5,r5)
+ggplot(m5, aes(c5, r5))+geom_point()+geom_line()+geom_vline(m5, aes(c5, r5),xintercept = 0)+labs(
+    x = "相对位置",
+    y = "相对光强",
+    title = "光强分布图")
+```
+
+```{r}
+data6<- read.table("./data6.txt",row.names=NULL, quote="\"", comment.char="",na.strings="0")
+data6<-as.matrix(data6)
+p4<-pheatmap(data6,cluster_rows = F,cluster_cols = F,show_colnames = F,legend = T,border_color="NA")
+
+r6<-data6[43,]
+c6<-c(-42:42)
+m6<-data.frame(c6,r6)
+ggplot(m6, aes(c6, r6))+geom_point()+geom_line()+geom_vline(m6, aes(c6, r6),xintercept = 0)+labs(
+    x = "相对位置",
+    y = "相对光强",
+    title = "光强分布图")
+```
+
+```{r 40}
+data7<- read.table("./data7.txt",row.names=NULL, quote="\"", comment.char="",na.strings="0")
+data7<-as.matrix(data7)
+pheatmap(data7,cluster_rows = F,cluster_cols = F,show_colnames = F,legend = F,border_color="NA")
+
+r7<-data7[10,] 
+c7<-c(-9:9)
+m7<-data.frame(c7,r7)
+ggplot(m7, aes(c7, r7))+geom_point()+geom_line()+geom_vline(m7, aes(c7, r7),xintercept = 0)+labs(
+    x = "相对位置",
+    y = "相对光强",
+    title = "光强分布图")
+```
+
+
+
+
+
