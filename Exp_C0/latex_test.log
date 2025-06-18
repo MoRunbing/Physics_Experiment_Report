@@ -1,0 +1,368 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdftex 2021.3.29)  1 MAR 2022 09:00
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**latex_test.tex
+(./latex_test.tex
+! Undefined control sequence.
+l.2 \documentclass
+                  [12pt,a4paper,UTF8]{ctexart}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.6 \usepackage
+               {geometry}%ç”¨äºè®¾ç½®ä¸Šä¸‹å·¦å³é¡µè¾¹è·
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.7 	\geometry
+              {left=2.5cm,right=2.5cm,top=3.2cm,bottom=2.8cm}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.8 \usepackage
+               {xeCJK,amsmath,paralist,enumerate,booktabs,multirow,graphicx,...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.17 	\setlength
+                {\parindent}{2em}%æ­£æ–‡é¦–è¡Œç¼©è¿›ä¸¤ä¸ªæ±‰å­—
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.17 	\setlength{\parindent}
+                            {2em}%æ­£æ–‡é¦–è¡Œç¼©è¿›ä¸¤ä¸ªæ±‰å­—
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.17 	\setlength{\parindent}
+                            {2em}%æ­£æ–‡é¦–è¡Œç¼©è¿›ä¸¤ä¸ªæ±‰å­—
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Undefined control sequence.
+l.19 	\lstset
+             {language=Matlab}%matlabä»£ç 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.22 \usepackage
+                {fancyhdr}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.24 	\pagestyle
+                {fancy}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.25 	\rhead
+            {å®éªŒ B0.1 å‚è€ƒæ–‡çŒ®çš„æ£€ç´¢å’Œç®¡ç†}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no å in font cmr10!
+Missing character: There is no ® in font cmr10!
+Missing character: There is no  in font cmr10!
+Missing character: There is no é in font cmr10!
+Missing character: There is no ª in font cmr10!
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no å in font cmr10!
+Missing character: There is no  in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no è in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no æ in font cmr10!
+Missing character: There is no – in font cmr10!
+Missing character: There is no ‡ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no ® in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no š in font cmr10!
+Missing character: There is no „ in font cmr10!
+Missing character: There is no æ in font cmr10!
+Missing character: There is no £ in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no ´ in font cmr10!
+Missing character: There is no ¢ in font cmr10!
+Missing character: There is no å in font cmr10!
+Missing character: There is no ’ in font cmr10!
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no ® in font cmr10!
+Missing character: There is no ¡ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no  in font cmr10!
+Missing character: There is no † in font cmr10!
+! Undefined control sequence.
+l.26 	\lhead
+            {åŸºç¡€ç‰©ç†å®éªŒ\uppercase\expandafter{\romannumeral2}å®éªŒæ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no å in font cmr10!
+Missing character: There is no Ÿ in font cmr10!
+Missing character: There is no º in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no ¡ in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no ‰ in font cmr10!
+Missing character: There is no © in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no  in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no å in font cmr10!
+Missing character: There is no ® in font cmr10!
+Missing character: There is no  in font cmr10!
+Missing character: There is no é in font cmr10!
+Missing character: There is no ª in font cmr10!
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no å in font cmr10!
+Missing character: There is no ® in font cmr10!
+Missing character: There is no  in font cmr10!
+Missing character: There is no é in font cmr10!
+Missing character: There is no ª in font cmr10!
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no æ in font cmr10!
+Missing character: There is no Š in font cmr10!
+Missing character: There is no ¥ in font cmr10!
+Missing character: There is no å in font cmr10!
+Missing character: There is no ‘ in font cmr10!
+Missing character: There is no Š in font cmr10!
+! Undefined control sequence.
+l.27 	\cfoot
+            {Page \thepage/\pageref{LastPage}}  %å½“å‰é¡µ\æ€»é¡µæ•°
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.27 	\cfoot{Page \thepage
+                          /\pageref{LastPage}}  %å½“å‰é¡µ\æ€»é¡µæ•°
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.27 	\cfoot{Page \thepage/\pageref
+                                   {LastPage}}  %å½“å‰é¡µ\æ€»é¡µæ•°
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.29 	\renewcommand
+                   {\headrulewidth}{0.4pt}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.29 	\renewcommand{\headrulewidth
+                                  }{0.4pt}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.30 	\renewcommand
+                   {\theenumi}{(\arabic{enumi})}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.30 	\renewcommand{\theenumi
+                             }{(\arabic{enumi})}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.30 	\renewcommand{\theenumi}{(\arabic
+                                       {enumi})}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.31 	\setlength
+                \headheight{15pt}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.31 	\setlength\headheight
+                           {15pt}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (478.9417pt too wide) in paragraph at lines 2--32
+[]\tenrm [12pt,a4paper,UTF8]ctexart ge-om-e-tryleft=2.5cm,right=2.5cm,top=3.2cm
+,bottom=2.8cm xeCJK,amsmath,paralist,enumerate,booktabs,multirow,graphicx,subfi
+g,setspace,listings,lastpage,hyperref,amssymb,upgreek|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm [
+.\tenrm 1
+.\tenrm 2
+.\tenrm p
+.etc.
+
+! Undefined control sequence.
+l.40 \begin
+           {document}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.45 \begin
+           {center}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.46 \LARGE
+           \textbf{å®éªŒ B0.1 å‚è€ƒæ–‡çŒ®çš„æ£€ç´¢å’Œç®¡ç†}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.46 \LARGE\textbf
+                  {å®éªŒ B0.1 å‚è€ƒæ–‡çŒ®çš„æ£€ç´¢å’Œç®¡ç†}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no å in font cmr10!
+Missing character: There is no ® in font cmr10!
+Missing character: There is no  in font cmr10!
+Missing character: There is no é in font cmr10!
+Missing character: There is no ª in font cmr10!
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no å in font cmr10!
+Missing character: There is no  in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no è in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no æ in font cmr10!
+Missing character: There is no – in font cmr10!
+Missing character: There is no ‡ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no ® in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no š in font cmr10!
+Missing character: There is no „ in font cmr10!
+Missing character: There is no æ in font cmr10!
+Missing character: There is no £ in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no ´ in font cmr10!
+Missing character: There is no ¢ in font cmr10!
+Missing character: There is no å in font cmr10!
+Missing character: There is no ’ in font cmr10!
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no ® in font cmr10!
+Missing character: There is no ¡ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no  in font cmr10!
+Missing character: There is no † in font cmr10!
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] )</usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on latex_test.pdf (1 page, 20232 bytes).
+PDF statistics:
+ 12 PDF objects out of 1000 (max. 8388607)
+ 7 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
